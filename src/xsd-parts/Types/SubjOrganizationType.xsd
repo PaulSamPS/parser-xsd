@@ -2,8 +2,8 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
            vc:minVersion="1.1" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
 
-    <xs:include schemaLocation="../Types/SetTextType.xsd"/>
-    <xs:include schemaLocation="../Types/KeyFieldType.xsd"/>
+    <xs:include schemaLocation="SetTextType.xsd"/>
+    <xs:include schemaLocation="KeyFieldType.xsd"/>
 
     <xs:complexType name="SubjOrganizationType">
         <xs:sequence>

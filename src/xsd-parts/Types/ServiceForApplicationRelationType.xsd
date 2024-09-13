@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+           vc:minVersion="1.1" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
+
+    <xs:include schemaLocation="ViewResultType.xsd"/>
+    <xs:include schemaLocation="WaySendType.xsd"/>
+    <xs:include schemaLocation="SetTextType.xsd"/>
+    <xs:include schemaLocation="EqTextType.xsd"/>
+    <xs:include schemaLocation="EqDateType.xsd"/>
+
+    <xs:complexType name="ServiceForApplicationRelationType">
+        <xs:sequence>
+            <xs:element name="WfServiceGPZU" type="WfServiceGPZUType">
+                <xs:annotation>
+                    <xs:documentation>Услуга: Выдача ГПЗУ</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute fixed="ref" name="operation" type="xs:string" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="WfServiceGPZUType">
+        <xs:sequence>
+            <xs:element name="Fields">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ProcessingStage" type="ProcessingStageType">
+                            <xs:annotation>
+                                <xs:documentation>Статус услуги</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="TransferMetodResult" type="WaySendType">
+                            <xs:annotation>
+                                <xs:documentation>Способ передачи результата</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="ViewResult" type="ViewResultType" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation>Форма передачи результата</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="DocRelGpzuResult" type="DocRelGpzuResultType"
+                                    minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation>Связь с результатом услуги</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute fixed="create" name="operation" type="xs:string" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="ProcessingStageType">
+        <xs:sequence>
+            <xs:element name="WfRefProcessingStage" type="WfRefProcessingStageType">
+                <xs:annotation>
+                    <xs:documentation>Справочник "Статусы услуги"</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="operation" type="xs:string" fixed="set" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="WfRefProcessingStageType">
+        <xs:sequence>
+            <xs:element name="Fields">
+                <xs:complexType>
+                    <xs:choice>
+                        <xs:element name="Alias">
+                            <xs:complexType>
+                                <xs:attribute fixed="eq" name="operation" type="xs:string"
+                                              use="required"/>
+                                <xs:attribute name="value" use="required">
+                                    <xs:simpleType>
+                                        <xs:restriction base="xs:string">
+                                            <xs:enumeration value="NewServise"/>
+                                        </xs:restriction>
+                                    </xs:simpleType>
+                                </xs:attribute>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="Name">
+                            <xs:complexType>
+                                <xs:attribute fixed="eq" name="operation" type="xs:string"
+                                              use="required"/>
+                                <xs:attribute name="value" use="required">
+                                    <xs:simpleType>
+                                        <xs:restriction base="xs:string">
+                                            <xs:enumeration value="Новая"/>
+                                        </xs:restriction>
+                                    </xs:simpleType>
+                                </xs:attribute>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute fixed="find" name="operation" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="DocRelGpzuResultType">
+        <xs:sequence>
+            <xs:element name="DocGPZU" type="DocGPZUType">
+                <xs:annotation>
+                    <xs:documentation>ГПЗУ</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute fixed="ref" name="operation" type="xs:string" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="DocGPZUType">
+        <xs:sequence>
+            <xs:element name="Fields">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="PurposeGpzu" type="SetTextType">
+                            <xs:annotation>
+                                <xs:documentation>Цель использования градостроительного плана ЗУ</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element minOccurs="0" name="DocGpzuZuRelation"
+                                    type="DocGpzuZuRelationType">
+                            <xs:annotation>
+                                <xs:documentation>Связь с земельным участком</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element minOccurs="0" name="DocRelPPM" type="DocRelPPMType">
+                            <xs:annotation>
+                                <xs:documentation>Связь с проектом планировки</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute fixed="create" name="operation" type="xs:string" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="DocGpzuZuRelationType">
+        <xs:choice>
+            <xs:element name="GknParcel">
+                <xs:annotation>
+                    <xs:documentation>ЕГРН ЗУ</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Fields">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="KN" type="EqTextType">
+                                        <xs:annotation>
+                                            <xs:documentation>Кадастровый номер</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                    <xs:attribute fixed="find" name="operation" type="xs:string" use="required"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="WfZuDraft">
+                <xs:annotation>
+                    <xs:documentation>Границы образуемого ЗУ</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Fields">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="UslNumber" type="EqTextType">
+                                        <xs:annotation>
+                                            <xs:documentation>Условный номер ЗУ</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                    <xs:attribute fixed="find" name="operation" type="xs:string" use="required"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="UrbanParselPPM">
+                <xs:annotation>
+                    <xs:documentation>Земельные участки проектные (ППиМ)</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Fields">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="NominalNumber" type="EqTextType">
+                                        <xs:annotation>
+                                            <xs:documentation>Условный номер ЗУ</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                    <xs:attribute fixed="find" name="operation" type="xs:string" use="required"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:choice>
+        <xs:attribute fixed="ref" name="operation" type="xs:string" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="DocRelPPMType">
+        <xs:sequence>
+            <xs:element name="DocAllDocPPPM" type="DocAllDocPPPMType">
+                <xs:annotation>
+                    <xs:documentation>Документы ПП и ПМ</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute fixed="ref" name="operation" type="xs:string" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="DocAllDocPPPMType">
+        <xs:choice>
+            <xs:element name="DocPMT">
+                <xs:annotation>
+                    <xs:documentation>Проект межевания территории</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Fields">
+                            <xs:complexType>
+                                <xs:all>
+                                    <xs:element name="Num" type="EqTextType">
+                                        <xs:annotation>
+                                            <xs:documentation>Номер документа, утвердившего ПМ</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="DateDoc" type="EqDateType">
+                                        <xs:annotation>
+                                            <xs:documentation>Дата документа, утвердившего ПМ</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                </xs:all>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                    <xs:attribute fixed="find" name="operation" type="xs:string" use="required"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="DocPPT">
+                <xs:annotation>
+                    <xs:documentation>Проект планировки территории</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Fields">
+                            <xs:complexType>
+                                <xs:all>
+                                    <xs:element name="Num" type="EqTextType">
+                                        <xs:annotation>
+                                            <xs:documentation>Номер документа, утвердившего ПП</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="DateDoc" type="EqDateType">
+                                        <xs:annotation>
+                                            <xs:documentation>Дата документа, утвердившего ПП</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                </xs:all>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                    <xs:attribute fixed="find" name="operation" type="xs:string" use="required"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="DocPPMT">
+                <xs:annotation>
+                    <xs:documentation>Проект планировки и межевания территории</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Fields">
+                            <xs:complexType>
+                                <xs:all>
+                                    <xs:element name="Num" type="EqTextType">
+                                        <xs:annotation>
+                                            <xs:documentation>Номер документа, утвердившего ППиПМ</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="DateDoc" type="EqDateType">
+                                        <xs:annotation>
+                                            <xs:documentation>Дата докуёмента, утвердившего ППиПМ</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                </xs:all>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                    <xs:attribute fixed="find" name="operation" type="xs:string" use="required"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:choice>
+    </xs:complexType>
+</xs:schema>

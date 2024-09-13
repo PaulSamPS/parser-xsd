@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+           vc:minVersion="1.1" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
+
+    <xs:include schemaLocation="../Types/StateApplicationType.xsd"/>
+    <xs:include schemaLocation="../Types/ViewLetterType.xsd"/>
+    <xs:include schemaLocation="../Types/WaySendType.xsd"/>
+    <xs:include schemaLocation="../Types/ViewResultType.xsd"/>
+    <xs:include schemaLocation="../Types/SetTextType.xsd"/>
+    <xs:include schemaLocation="../Types/SetDateType.xsd"/>
+    <xs:include schemaLocation="../Types/ApplicationDeclarerRelationType.xsd"/>
+    <xs:include schemaLocation="../Types/ServiceForApplicationRelationType.xsd"/>
+
+    <xs:complexType name="FieldsType">
+        <xs:sequence>
+            <xs:element name="StateApplication" type="StateApplicationType">
+                <xs:annotation>
+                    <xs:documentation>Статус заявления</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ViewLetter" type="ViewLetterType">
+                <xs:annotation>
+                    <xs:documentation>Вид заявления</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="WaySend" type="WaySendType">
+                <xs:annotation>
+                    <xs:documentation>Способ подачи заявления</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ViewResult" type="ViewResultType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Форма получения результата</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="TypeDelivery" type="WaySendType">
+                <xs:annotation>
+                    <xs:documentation>Способ получения результата</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="ReasonCanselApplication" type="SetTextType">
+                <xs:annotation>
+                    <xs:documentation>Обоснование отмены</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="Note" type="SetTextType">
+                <xs:annotation>
+                    <xs:documentation>Примечание</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="DepartmentEPGU" type="SetTextType">
+                <xs:annotation>
+                    <xs:documentation>Наименование ведомства</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="NumEPGU" type="SetTextType">
+                <xs:annotation>
+                    <xs:documentation>Идентификатор</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="DateEPGU" type="SetDateType">
+                <xs:annotation>
+                    <xs:documentation>Дата получения</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="Agent" type="SetTextType">
+                <xs:annotation>
+                    <xs:documentation>Сведения о заявителе</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+
+
+            <xs:element name="Num" type="SetTextType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Номер заявления</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="DateApplication" type="SetDateType">
+                <xs:annotation>
+                    <xs:documentation>Дата  заявления</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="OutNum" type="SetTextType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Номер исх заявления</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="OutDate" type="SetDateType">
+                <xs:annotation>
+                    <xs:documentation>Дата исх заявления</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="DocAgent" type="SetTextType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Краткие сведения о документе, наделяющим представителя действовать от имени заявителя</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="SubjRoleDeclarer" type="ApplicationDeclarerRelationType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">
+                        Данные заявителя
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="RepresentativeDeclarer" type="ApplicationDeclarerRelationType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">
+                        Данные представителя
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+            <xs:element name="ServiceForApplicationRelation"
+                        type="ServiceForApplicationRelationType">
+                <xs:annotation>
+                    <xs:documentation>Связь с услугой</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

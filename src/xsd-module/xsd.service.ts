@@ -10,7 +10,7 @@ export class XsdService {
     const xsdFiles = [
       path.join(basePath, 'src/xsd-parts/WaySend/WaySend.xsd'),
       path.join(basePath, 'src/xsd-parts/WaySend/WaySendType.xsd'),
-      path.join(basePath, 'src/xsd-parts/Types/DocRefTransferMethodType.xsd'),
+      path.join(basePath, 'src/xsd-parts/Types/docRefTransferMethodType.xsd'),
     ];
 
     let combinedXsdBody = '';

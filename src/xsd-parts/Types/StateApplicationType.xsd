@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
            vc:minVersion="1.1" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
-    <xs:complexType name="GenderType">
+
+    <xs:complexType name="StateApplicationType">
         <xs:sequence>
-            <xs:element name="SubjRefGenderType" type="SubjRefGenderTypeType"/>
+            <xs:element name="DocRefStateApplication" type="DocRefStateApplicationType">
+                <xs:annotation>
+                    <xs:documentation>Справочник "Статус заявления"</xs:documentation>
+                </xs:annotation>
+            </xs:element>
         </xs:sequence>
         <xs:attribute name="operation" type="xs:string" fixed="set" use="required"/>
     </xs:complexType>
 
-    <xs:complexType name="SubjRefGenderTypeType">
+    <xs:complexType name="DocRefStateApplicationType">
         <xs:sequence>
             <xs:element name="Fields">
                 <xs:complexType>
@@ -20,22 +25,9 @@
                                 <xs:attribute name="value" use="required">
                                     <xs:simpleType>
                                         <xs:restriction base="xs:string">
-                                            <xs:enumeration value="Male"/>
-                                            <xs:enumeration value="Female"/>
-                                        </xs:restriction>
-                                    </xs:simpleType>
-                                </xs:attribute>
-                            </xs:complexType>
-                        </xs:element>
-                        <xs:element minOccurs="1" name="Name">
-                            <xs:complexType>
-                                <xs:attribute fixed="eq" name="operation" type="xs:string"
-                                              use="required"/>
-                                <xs:attribute name="value" use="required">
-                                    <xs:simpleType>
-                                        <xs:restriction base="xs:string">
-                                            <xs:enumeration value="Мужской"/>
-                                            <xs:enumeration value="Женский"/>
+                                            <xs:enumeration value="New"/>
+                                            <xs:enumeration value="cancelled"/>
+                                            <xs:enumeration value="registered"/>
                                         </xs:restriction>
                                     </xs:simpleType>
                                 </xs:attribute>

@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
            vc:minVersion="1.1" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
+
+    <xs:complexType name="WaySendType">
+        <xs:sequence>
+            <xs:element name="DocRefTransferMethod" type="DocRefTransferMethodType">
+                <xs:annotation>
+                    <xs:documentation>Справочник "Способы передачи результата"</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="operation" type="xs:string" fixed="set" use="required"/>
+    </xs:complexType>
+
     <xs:complexType name="DocRefTransferMethodType">
         <xs:sequence>
             <xs:element name="Fields">
@@ -19,24 +31,6 @@
                                             <xs:enumeration value="email"/>
                                             <xs:enumeration value="inHand"/>
                                             <xs:enumeration value="rpgu"/>
-                                        </xs:restriction>
-                                    </xs:simpleType>
-                                </xs:attribute>
-                            </xs:complexType>
-                        </xs:element>
-                        <xs:element minOccurs="1" name="Name">
-                            <xs:complexType>
-                                <xs:attribute fixed="eq" name="operation" type="xs:string"
-                                              use="required"/>
-                                <xs:attribute name="value" use="required">
-                                    <xs:simpleType>
-                                        <xs:restriction base="xs:string">
-                                            <xs:enumeration value="МФЦ"/>
-                                            <xs:enumeration value="ЕПГУ"/>
-                                            <xs:enumeration value="Почтовое отправление"/>
-                                            <xs:enumeration value="Электронная почта"/>
-                                            <xs:enumeration value="Лично"/>
-                                            <xs:enumeration value="РПГУ"/>
                                         </xs:restriction>
                                     </xs:simpleType>
                                 </xs:attribute>

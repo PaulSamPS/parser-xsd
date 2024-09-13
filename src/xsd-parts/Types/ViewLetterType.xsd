@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+           vc:minVersion="1.1" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
+
+    <xs:complexType name="ViewLetterType">
+        <xs:sequence>
+            <xs:element name="DocRefApplication" type="DocRefApplicationType">
+                <xs:annotation>
+                    <xs:documentation>Справочник "Виды заявлений"</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="operation" type="xs:string" fixed="set" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="DocRefApplicationType">
+        <xs:sequence>
+            <xs:element name="Fields">
+                <xs:complexType>
+                    <xs:choice>
+                        <xs:element minOccurs="1" name="Alias">
+                            <xs:complexType>
+                                <xs:attribute fixed="eq" name="operation" type="xs:string"
+                                              use="required"/>
+                                <xs:attribute name="value" use="required">
+                                    <xs:simpleType>
+                                        <xs:restriction base="xs:string">
+                                            <xs:enumeration value="Pspzu"/>
+                                            <xs:enumeration value="Gpzu"/>
+                                            <xs:enumeration value="RsDate"/>
+                                            <xs:enumeration value="Rs"/>
+                                            <xs:enumeration value="Rv"/>
+                                            <xs:enumeration value="Change"/>
+                                            <xs:enumeration value="ChangeRs"/>
+                                            <xs:enumeration value="Adress"/>
+                                            <xs:enumeration value="Isogd"/>
+                                            <xs:enumeration value="Usl"/>
+                                            <xs:enumeration value="Otklon"/>
+                                            <xs:enumeration value="PreparationPT"/>
+                                            <xs:enumeration value="ApprovalPT"/>
+                                            <xs:enumeration value="PreparationChangesPT"/>
+                                            <xs:enumeration value="ApprovalChangesPT"/>
+                                            <xs:enumeration value="Perevod"/>
+                                            <xs:enumeration value="Pereplan"/>
+                                            <xs:enumeration value="DocRefApplication_35"/>
+                                            <xs:enumeration value="DocRefApplication_34"/>
+                                            <xs:enumeration value="ProvisionZUBargain"/>
+                                            <xs:enumeration value="ProvisionZUNotBargain"/>
+                                            <xs:enumeration value="TransferLand"/>
+                                            <xs:enumeration value="DocWarrantForEarthworks"/>
+                                            <xs:enumeration value="DocElongationEarthworks"/>
+                                            <xs:enumeration value="DocEndEarthworks"/>
+                                            <xs:enumeration value="DocRefApplication_52"/>
+                                            <xs:enumeration value="DocRefApplication_50"/>
+                                            <xs:enumeration value="ErrorCorrectionGpzu"/>
+                                            <xs:enumeration value="DuplicateGpzu"/>
+                                            <xs:enumeration value="ErrorCorrectionRs"/>
+                                            <xs:enumeration value="DuplicateRs"/>
+                                            <xs:enumeration value="ErrorCorrectionRv"/>
+                                            <xs:enumeration value="DuplicateRv"/>
+                                            <xs:enumeration value="ErrorCorrectionNotificationAboutBuilding"/>
+                                            <xs:enumeration value="DuplicateNotificationAboutBuilding"/>
+                                            <xs:enumeration value="ErrorCorrectionNotificationAboutEndBuilding"/>
+                                            <xs:enumeration value="DuplicateNotificationAboutEndBuilding"/>
+                                            <xs:enumeration value="Advertising"/>
+                                            <xs:enumeration value="PromoConstrCancel"/>
+                                            <xs:enumeration value="CompletionPereplan"/>
+                                            <xs:enumeration value="ProvisionZUPropertyFree"/>
+                                            <xs:enumeration value="ProvisionZUNotBargainRent"/>
+                                            <xs:enumeration value="ProvisionZUNotBargainPay"/>
+                                            <xs:enumeration value="ProvisionZUNotBargainFree"/>
+                                            <xs:enumeration value="ProvisionZUNotBargainIndefinitely"/>
+                                            <xs:enumeration value="SrzuSale"/>
+                                            <xs:enumeration value="LandPlotSale"/>
+                                        </xs:restriction>
+
+                                    </xs:simpleType>
+                                </xs:attribute>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute fixed="find" name="operation" type="xs:string" use="required"/>
+    </xs:complexType>
+</xs:schema>

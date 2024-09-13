@@ -2,7 +2,7 @@ import { Controller, Get, Res } from '@nestjs/common';
 import { XsdService } from './xsd.service';
 import { Response } from 'express';
 
-@Controller('xsd-module')
+@Controller('xsd')
 export class XsdController {
   constructor(private readonly xsdService: XsdService) {}
 

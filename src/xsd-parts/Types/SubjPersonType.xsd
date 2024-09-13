@@ -2,16 +2,12 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
            vc:minVersion="1.1" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
 
-    <xs:include schemaLocation="../Types/SetTextType.xsd"/>
-    <xs:include schemaLocation="../Types/UpdateFieldType.xsd"/>
-    <xs:include schemaLocation="../Types/SetDateType.xsd"/>
-    <xs:include schemaLocation="../Types/KeyFieldType.xsd"/>
-    <xs:include schemaLocation="../Types/SetIntType.xsd"/>
-    <xs:include schemaLocation="../Types/OrgFormType.xsd"/>
-    <xs:include schemaLocation="../Types/SubjStatusType.xsd"/>
-    <xs:include schemaLocation="../Types/GenderType.xsd"/>
-    <xs:include schemaLocation="../Types/DocIdentityTypeType.xsd"/>
-
+    <xs:include schemaLocation="SetTextType.xsd"/>
+    <xs:include schemaLocation="UpdateFieldType.xsd"/>
+    <xs:include schemaLocation="SetDateType.xsd"/>
+    <xs:include schemaLocation="KeyFieldType.xsd"/>
+    <xs:include schemaLocation="SetIntType.xsd"/>
+    <xs:include schemaLocation="SubjStatusType.xsd"/>
 
     <xs:complexType name="SubjPersonType">
     <xs:annotation>
@@ -198,4 +194,123 @@
     </xs:sequence>
     <xs:attribute fixed="find-create" name="operation" type="xs:string" use="required"/>
 </xs:complexType>
+
+    <!-- Организационно правовая форма -->
+    <xs:complexType name="OrgFormType">
+        <xs:sequence>
+            <xs:element name="SubjOrgFormFiz" type="SubjOrgFormFizType"/>
+        </xs:sequence>
+        <xs:attribute name="operation" type="xs:string" fixed="set" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="SubjOrgFormFizType">
+        <xs:sequence>
+            <xs:element name="Fields">
+                <xs:complexType>
+                    <xs:choice>
+                        <xs:element minOccurs="1" name="Alias">
+                            <xs:complexType>
+                                <xs:attribute fixed="eq" name="operation" type="xs:string"
+                                              use="required"/>
+                                <xs:attribute name="value" use="required">
+                                    <xs:simpleType>
+                                        <xs:restriction base="xs:string">
+                                            <xs:enumeration value="Farmer"/>
+                                            <xs:enumeration value="Businessman"/>
+                                            <xs:enumeration value="Lawyer"/>
+                                            <xs:enumeration value="Notary"/>
+                                            <xs:enumeration value="SubjOrgForm_997"/>
+                                            <xs:enumeration value="SubjOrgForm_998"/>
+                                        </xs:restriction>
+                                    </xs:simpleType>
+                                </xs:attribute>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute fixed="find" name="operation" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <!-- Пол -->
+    <xs:complexType name="GenderType">
+        <xs:sequence>
+            <xs:element name="SubjRefGenderType" type="SubjRefGenderTypeType"/>
+        </xs:sequence>
+        <xs:attribute name="operation" type="xs:string" fixed="set" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="SubjRefGenderTypeType">
+        <xs:sequence>
+            <xs:element name="Fields">
+                <xs:complexType>
+                    <xs:choice>
+                        <xs:element minOccurs="1" name="Alias">
+                            <xs:complexType>
+                                <xs:attribute fixed="eq" name="operation" type="xs:string"
+                                              use="required"/>
+                                <xs:attribute name="value" use="required">
+                                    <xs:simpleType>
+                                        <xs:restriction base="xs:string">
+                                            <xs:enumeration value="male"/>
+                                            <xs:enumeration value="female"/>
+                                        </xs:restriction>
+                                    </xs:simpleType>
+                                </xs:attribute>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute fixed="find" name="operation" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <!-- Идентификационный документ -->
+    <xs:complexType name="DocIdentityTypeType">
+        <xs:sequence>
+            <xs:element name="REFDocTypesSubjIdentity" type="REFDocTypesSubjIdentityType"/>
+        </xs:sequence>
+        <xs:attribute name="operation" type="xs:string" fixed="set" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="REFDocTypesSubjIdentityType">
+        <xs:sequence>
+            <xs:element name="Fields">
+                <xs:complexType>
+                    <xs:choice>
+                        <xs:element minOccurs="1" name="Alias">
+                            <xs:complexType>
+                                <xs:attribute fixed="eq" name="operation" type="xs:string"
+                                              use="required"/>
+                                <xs:attribute name="value" use="required">
+                                    <xs:simpleType>
+                                        <xs:restriction base="xs:string">
+                                            <xs:enumeration value="REFDocTypesSubjIdentity_1"/>
+                                            <xs:enumeration value="REFDocTypesSubjIdentity_2"/>
+                                            <xs:enumeration value="REFDocTypesSubjIdentity_3"/>
+                                            <xs:enumeration value="REFDocTypesSubjIdentity_4"/>
+                                            <xs:enumeration value="REFDocTypesSubjIdentity_5"/>
+                                            <xs:enumeration value="REFDocTypesSubjIdentity_6"/>
+                                            <xs:enumeration value="REFDocTypesSubjIdentity_7"/>
+                                            <xs:enumeration value="REFDocTypesSubjIdentity_8"/>
+                                            <xs:enumeration value="REFDocTypesSubjIdentity_9"/>
+                                            <xs:enumeration value="REFDocTypesSubjIdentity_10"/>
+                                            <xs:enumeration value="REFDocTypesSubjIdentity_11"/>
+                                            <xs:enumeration value="REFDocTypesSubjIdentity_12"/>
+                                            <xs:enumeration value="REFDocTypesSubjIdentity_13"/>
+                                            <xs:enumeration value="REFDocTypesSubjIdentity_14"/>
+                                        </xs:restriction>
+                                    </xs:simpleType>
+                                </xs:attribute>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute fixed="find" name="operation" type="xs:string" use="required"/>
+    </xs:complexType>
+
 </xs:schema>
