@@ -8,10 +8,19 @@ export class XsdService {
   async getCombinedXsd(res: Response) {
     const basePath = process.cwd();
     const xsdFiles = [
-      path.join(basePath, 'src/xsd-parts/WaySend/WaySend.xsd'),
-      path.join(basePath, 'src/xsd-parts/WaySend/WaySendType.xsd'),
-      path.join(basePath, 'src/xsd-parts/Types/docRefTransferMethodType.xsd'),
+      path.join(basePath, 'src/xsd-parts/DocApplication/DocApplication.xsd'),
+      path.join(basePath, 'src/xsd-parts/DocApplication/FieldsType.xsd'),
     ];
+
+    // Получаем список файлов в папке Types
+    const typesFolder = path.join(basePath, 'src/xsd-parts/Types');
+    const typeFiles = await fs.promises.readdir(typesFolder);
+
+    typeFiles.forEach((file) => {
+      if (file.endsWith('Type.xsd')) {
+        xsdFiles.push(path.join(typesFolder, file));
+      }
+    });
 
     let combinedXsdBody = '';
 

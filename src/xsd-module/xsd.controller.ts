@@ -6,7 +6,7 @@ import { Response } from 'express';
 export class XsdController {
   constructor(private readonly xsdService: XsdService) {}
 
-  @Get('combined')
+  @Get('docApplication')
   async getCombinedXsd(@Res() res: Response) {
     return this.xsdService.getCombinedXsd(res);
   }
