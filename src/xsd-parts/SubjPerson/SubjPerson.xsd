@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
            vc:minVersion="1.1" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
-    <xs:include schemaLocation="./WaySendType.xsd"/>
+    <xs:include schemaLocation="SubjPersonType.xsd"/>
 
-    <xs:element name="WaySend" type="WaySendType">
+    <xs:element name="SubjPerson" type="SubjPersonType">
         <xs:annotation>
-            <xs:documentation>Способ подачи заявления</xs:documentation>
+            <xs:documentation xml:lang="ru">Физическое лицо</xs:documentation>
         </xs:annotation>
     </xs:element>
-
 </xs:schema>
