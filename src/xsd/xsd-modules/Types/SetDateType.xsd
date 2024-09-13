@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+           vc:minVersion="1.1" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
+    <xs:complexType name="SetDateType">
+        <xs:attribute name="operation" type="xs:string" fixed="set" use="required"/>
+        <xs:attribute name="value" type="xs:date" use="required"/>
+    </xs:complexType>
+</xs:schema>

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+           vc:minVersion="1.1" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
+
+    <xs:include schemaLocation="../Types/SetTextType.xsd"/>
+    <xs:include schemaLocation="../Types/UpdateFieldType.xsd"/>
+    <xs:include schemaLocation="../Types/SetDateType.xsd"/>
+    <xs:include schemaLocation="../Types/KeyFieldType.xsd"/>
+    <xs:include schemaLocation="../Types/SetIntType.xsd"/>
+    <xs:include schemaLocation="../Types/OrgFormType.xsd"/>
+    <xs:include schemaLocation="../Types/SubjStatusType.xsd"/>
+    <xs:include schemaLocation="../Types/GenderType.xsd"/>
+    <xs:include schemaLocation="../Types/DocIdentityTypeType.xsd"/>
+
+
+    <xs:complexType name="SubjPersonType">
+    <xs:annotation>
+        <xs:documentation xml:lang="ru"/>
+    </xs:annotation>
+    <xs:sequence>
+        <xs:element name="Fields">
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:element name="SubjStatus" type="SubjStatusType" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Статус субъекта</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="LastName" type="UpdateFieldType">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Фамилия</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="FirstName" type="SetTextType">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Имя</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="MiddleName" type="SetTextType">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Отчество</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="Gender" type="GenderType" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Пол</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="BirthDate" type="SetDateType">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Дата рождения</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="DocIdentityType" type="DocIdentityTypeType" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Тип документа, удостоверяющего личность </xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="DocIdentitySeria" type="KeyFieldType">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Серия</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="DocIdentityNumber" type="KeyFieldType">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Номер</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="DocIdentityDateOfIssue" type="SetDateType">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Дата выдачи</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="DocIdentityDepartmentCode" type="SetTextType">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Код подразделения</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="Citizenship" type="SetTextType">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Гражданство</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="PlaceOfBirth" type="SetTextType">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Место рождения</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="DocIdentityIssueBy" type="SetTextType">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Кем выдан</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="RegAddress" type="SetTextType" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Адрес регистрации</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="Address" type="SetTextType" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Адрес проживания</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="INN" type="SetTextType" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">ИНН</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="Telephone" type="SetTextType">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Телефон</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="Email" type="SetTextType">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Электронная почта</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="Snils" type="SetTextType">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">СНИЛС</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="Note" type="SetTextType">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Примечание</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="IsEntrepreneur" type="SetIntType"/>
+                    <xs:element name="PostDirector" type="SetTextType" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Должность</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="EntrepreneurShortName" type="SetTextType" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Краткое наименование ИП</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="EntrepreneurFullName" type="SetTextType" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Полное наименование ИП</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="RegistrationNumber" type="SetTextType" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">ОГРН ИП</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="RegistartionDate" type="SetDateType" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Дата государственной регистрации</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="LegalDocDirector" type="SetTextType" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Документ-основание</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="DocReasonDate" type="SetDateType" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Дата документа основания</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="Agreement" type="SetIntType" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Допущен до электронного согласования</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="OrgForm" type="OrgFormType" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Организационно-правовая форма</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="Account" type="SetTextType" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Расчетный счет</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="Bank" type="SetTextType" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Банк</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="Bic" type="SetTextType" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">БИК</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="CorrAccount" type="SetTextType" minOccurs="0">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="ru">Корреспондентский счет</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:element>
+    </xs:sequence>
+    <xs:attribute fixed="find-create" name="operation" type="xs:string" use="required"/>
+</xs:complexType>
+</xs:schema>

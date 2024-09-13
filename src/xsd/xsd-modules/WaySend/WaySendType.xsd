@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+           vc:minVersion="1.1" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
+    <xs:include schemaLocation="../Types/DocRefTransferMethodType.xsd"/>
+
+    <xs:complexType name="WaySendType">
+        <xs:sequence>
+            <xs:element name="DocRefTransferMethod" type="DocRefTransferMethodType">
+                <xs:annotation>
+                    <xs:documentation>Справочник "Способы передачи результата"</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="operation" type="xs:string" fixed="set" use="required"/>
+    </xs:complexType>
+
+</xs:schema>

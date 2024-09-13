@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+           vc:minVersion="1.1" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
+
+    <xs:include schemaLocation="../Types/SetTextType.xsd"/>
+    <xs:include schemaLocation="../Types/KeyFieldType.xsd"/>
+
+    <xs:complexType name="SubjOrganizationType">
+        <xs:sequence>
+            <xs:annotation>
+                <xs:documentation xml:lang="ru"/>
+            </xs:annotation>
+            <xs:element name="Fields">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Name" type="SetTextType">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="ru">Полное наименование организации</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="INN" type="SetTextType">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="ru">
+                                    ИНН
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="RegistrationNumber" type="KeyFieldType">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="ru">
+                                    ОГРН
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="LegalAddress" type="SetTextType" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="ru">Юридический адрес</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="Address" type="SetTextType" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="ru">Фактический адрес</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element minOccurs="0" name="Telephone" type="SetTextType">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="ru">
+                                    Телефон
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element minOccurs="0" name="Email" type="SetTextType">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="ru">Электронная почта</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute fixed="find-create" name="operation" type="xs:string" use="required"/>
+    </xs:complexType>
+</xs:schema>

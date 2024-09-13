@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+           vc:minVersion="1.1" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
+    <xs:complexType name="UpdateFieldType">
+        <xs:attribute fixed="set" name="operation" type="xs:string" use="required"/>
+        <xs:attribute name="value" type="xs:string" use="required"/>
+        <xs:attribute fixed="true" name="updateField" type="xs:boolean" use="required"/>
+    </xs:complexType>
+</xs:schema>
