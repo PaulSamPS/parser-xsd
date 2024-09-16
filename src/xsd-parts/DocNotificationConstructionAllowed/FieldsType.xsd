@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+           vc:minVersion="1.1" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
+
+    <xs:include schemaLocation="../Types/StateApplicationType.xsd"/>
+    <xs:include schemaLocation="../Types/StateDocType.xsd"/>
+    <xs:include schemaLocation="../Types/DocClassIdType.xsd"/>
+    <xs:include schemaLocation="../Types/SetDateType.xsd"/>
+    <xs:include schemaLocation="../Types/SetTextType.xsd"/>
+    <xs:include schemaLocation="../Types/SubjRoleWhoApproveOrgType.xsd"/>
+    <xs:include schemaLocation="../Types/DocRelParselNotificationType.xsd"/>
+
+    <xs:complexType name="FieldsType">
+        <xs:sequence>
+            <xs:element name="StateDoc" type="StateDocType">
+                <xs:annotation>
+                    <xs:documentation>Статус документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DocClassId" type="DocClassIdType">
+                <xs:annotation>
+                    <xs:documentation>Класс документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DateReg" type="SetDateType">
+                <xs:annotation>
+                    <xs:documentation>Дата</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Num" type="SetTextType">
+                <xs:annotation>
+                    <xs:documentation>Номер</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DocName" type="SetTextType">
+                <xs:annotation>
+                    <xs:documentation>Наименование документа</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SubjRoleWhoApproveOrg" type="SubjRoleWhoApproveOrgType">
+                <xs:annotation>
+                    <xs:documentation>Кто утвердил (Организация)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DocRelParselNotification" type="DocRelParselNotificationType">
+                <xs:annotation>
+                    <xs:documentation>Земельный участок</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Note" type="SetTextType">
+                <xs:annotation>
+                    <xs:documentation>Примечание</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

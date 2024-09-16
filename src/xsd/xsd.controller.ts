@@ -11,7 +11,11 @@ import { Response } from 'express';
 
 export enum Queries {
   DocApplication = 'DocApplication',
+  DocDemolitionEnd = 'DocDemolitionEnd',
   DocNotificationAboutBuilding = 'DocNotificationAboutBuilding',
+  DocNotificationAboutDemolition = 'DocNotificationAboutDemolition',
+  DocNotificationAboutEndBuilding = 'DocNotificationAboutEndBuilding',
+  DocNotificationConstructionAllowed = 'DocNotificationConstructionAllowed',
 }
 
 @Controller('xsd')
