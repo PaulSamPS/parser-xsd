@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+           vc:minVersion="1.1" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
+
+    <xs:complexType name="DocClassIdType">
+        <xs:sequence>
+            <xs:element name="GisigdRefDocClass" type="GisigdRefDocClassType">
+                <xs:annotation>
+                    <xs:documentation>Справочник "Класс документа"</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="operation" type="xs:string" fixed="set" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="GisigdRefDocClassType">
+        <xs:sequence>
+            <xs:element name="Fields">
+                <xs:complexType>
+                    <xs:choice>
+                        <xs:element minOccurs="1" name="Alias">
+                            <xs:complexType>
+                                <xs:attribute fixed="eq" name="operation" type="xs:string"
+                                              use="required"/>
+                                <xs:attribute name="value" use="required">
+                                    <xs:simpleType>
+                                        <xs:restriction base="xs:string">
+                                            <xs:enumeration value="GisigdRefDocClass_44"/>
+                                        </xs:restriction>
+                                    </xs:simpleType>
+                                </xs:attribute>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute fixed="find" name="operation" type="xs:string" use="required"/>
+    </xs:complexType>
+
+</xs:schema>

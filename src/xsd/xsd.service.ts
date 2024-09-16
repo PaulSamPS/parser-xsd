@@ -2,14 +2,15 @@ import { Injectable } from '@nestjs/common';
 import * as path from 'node:path';
 import * as fs from 'node:fs';
 import { Response } from 'express';
+import { Queries } from './xsd.controller';
 
 @Injectable()
 export class XsdService {
-  async getCombinedXsd(res: Response) {
+  async getCombinedXsd(res: Response, query: Queries) {
     const basePath = process.cwd();
     const xsdFiles = [
-      path.join(basePath, 'src/xsd-parts/DocApplication/DocApplication.xsd'),
-      path.join(basePath, 'src/xsd-parts/DocApplication/FieldsType.xsd'),
+      path.join(basePath, `src/xsd-parts/${query}/${query}.xsd`),
+      path.join(basePath, `src/xsd-parts/${query}/FieldsType.xsd`),
     ];
 
     // Получаем список файлов в папке Types
@@ -44,8 +45,8 @@ export class XsdService {
     }
 
     const combinedXsd = `<?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" vc:minVersion="1.1" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
-${combinedXsdBody}</xs:schema>`;
+      <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" vc:minVersion="1.1" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
+      ${combinedXsdBody}</xs:schema>`;
 
     res.header('Content-Type', 'application/xml');
     return res.send(combinedXsd);

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+           vc:minVersion="1.1" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
+
+    <xs:include schemaLocation="FieldsType.xsd"/>
+
+    <xs:element name="DocNotificationAboutBuilding" type="DocNotificationAboutBuildingType">
+        <xs:annotation>
+            <xs:documentation>Уведомление</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="DocNotificationAboutBuildingType">
+        <xs:sequence>
+            <xs:element name="scheme" type="schemeType">
+                <xs:annotation>
+                    <xs:documentation>Схема проекта</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Fields" type="FieldsType">
+                <xs:annotation>
+                    <xs:documentation>Параметры Уведомления</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute fixed="find-create" name="operation"/>
+    </xs:complexType>
+
+    <xs:complexType name="schemeType">
+        <xs:choice>
+            <xs:element name="moorenburg" fixed="город Оренбург"/>
+        </xs:choice>
+    </xs:complexType>
+</xs:schema>

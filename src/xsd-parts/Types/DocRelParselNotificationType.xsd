@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+           vc:minVersion="1.1" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
+
+    <xs:include schemaLocation="KeyFieldType.xsd"/>
+
+
+    <!-- Земельный участок -->
+    <xs:complexType name="DocRelParselNotificationType">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru"> </xs:documentation>
+        </xs:annotation>
+        <xs:choice>
+            <xs:element minOccurs="1" name="WfGpzuObjectView" type="WfGpzuObjectViewType">
+                <xs:annotation>
+                    <xs:documentation xml:lang="ru">Земельные участки</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:choice>
+        <xs:attribute fixed="ref" name="operation" type="xs:string" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="WfGpzuObjectViewType">
+        <xs:annotation>
+            <xs:documentation xml:lang="ru"/>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Fields">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="KN" type="KeyFieldType" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation xml:lang="ru">Кадастровый номер</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute fixed="find-create" name="operation" type="xs:string" use="required"/>
+    </xs:complexType>
+
+</xs:schema>
